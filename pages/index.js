@@ -1,7 +1,18 @@
+import React from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
+import axios from 'axios'
 
-export default function Home() {
+const Home = () => {
+
+  useEffect(() => {
+
+  }, [])
+
+  const getProducts = () => {
+    const url = 'http://localhost:3000/api/products'
+    axios.get(url)
+  }
+
   return (
     <div>
       <Head>
@@ -16,3 +27,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
