@@ -1,6 +1,11 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import React from "react";
+import NProgress from "nprogress";
+
+Router.onRouteChangeStart = () => NProgress.start();
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 const Header = () => {
   const user = false;
@@ -10,7 +15,7 @@ const Header = () => {
     <header className="py-5 bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/">
-          <a className="font-bold text-2xl text-gray-700">
+          <a className="font-bold text-">
             Next~<span className="text-red-700">Rentals</span>{" "}
           </a>
         </Link>
