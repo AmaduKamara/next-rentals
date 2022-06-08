@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 const Header = () => {
+  const user = true;
   return (
     <header className="py-5 bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center">
@@ -10,14 +11,37 @@ const Header = () => {
             Next~<span className="text-red-700">Rentals</span>{" "}
           </a>
         </Link>
-        <nav>
+        <nav className="flex items-center">
           <ul className="flex items-center">
-            <li className="mx-5 text-lg">
-              <Link href="/login">Login</Link>
+            <li className="mx-5 text-lg hover:text-red-700">
+              <Link href="/cart">Cart</Link>
             </li>
-            <li className="ml-5 text-lg">
-              <Link href="/signup">Signup</Link>
-            </li>
+            {user && (
+              <li className="mx-5 text-lg hover:text-red-700">
+                <Link href="/create">Create</Link>
+              </li>
+            )}
+          </ul>
+          <ul className="flex items-center">
+            {user ? (
+              <>
+                <li className="mx-5 text-lg hover:text-red-700">
+                  <Link href="/account">Account</Link>
+                </li>
+                <li className="ml-5 text-lg hover:text-red-700">
+                  <Link href="/logout">Logout</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="mx-5 text-lg hover:text-red-700">
+                  <Link href="/login">Login</Link>
+                </li>
+                <li className="ml-5 text-lg hover:text-red-700">
+                  <Link href="/signup">Signup</Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
